@@ -1,0 +1,125 @@
+
+
+.section-share{
+
+    &.section-specialty{
+        background-color: #f5f5f5;
+    }
+    &.section-about{
+        height: 500px !important;
+        margin: 0 100px;
+        border-top: 1px solid #f5f5f5;
+        border-bottom: 1px solid #f5f5f5;
+        .section-about-header{
+            padding: 20px 10px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .section-about-content{
+            display: flex;
+            gap: 24px;
+            .content-left{
+                width: 50%;
+            }
+            .content-right{
+                width: 50%;
+                text-align: justify;
+                font-style: italic;
+            }
+        }
+    }
+    .section-body{
+        .img-custom{
+            width: 278px;
+            height: 150px;
+            img{
+                width: 90%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .img-custom.img-outstanding{
+            cursor: pointer;
+            img{
+                margin: 0 auto;
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+            }
+        }
+     
+    }
+
+}
+.section-share{
+    height: 330px;
+    margin-top: 24px;
+    .section-content{
+        margin: 0 100px;
+        display: flex;
+        flex-direction: column;
+        .section-header{
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            .title-section{
+                font-size: 28px;
+                font-weight: 600;
+            }
+            .btn-section{
+                outline: none;
+                border: none;
+                padding: 6px 18px;
+                background-color: #d7d7d7;
+                text-transform: uppercase;
+                &:hover{
+                    color: #fff;
+                    background-color: #f7d800;
+                }
+            }
+        }
+    }
+    
+}
+  
+  
+  
+  // Reset Slick CSS
+.slick-prev{
+    // position: relative !important;
+    left: -10px !important;
+    z-index: 1000;
+    width: 44px !important;
+    height: 48px !important;
+    background-color: #fff !important;
+    border: 2px solid #d7d7d7 !important;
+    &:hover{
+        background-color: #d7d7d7 !important;
+    }
+}
+.slick-prev::before,.slick-next::before{
+    color: red !important;
+    font-family: FontAwesome !important;
+}
+
+.slick-next{
+    // position: relative !important;
+    right:  -10px !important;
+    z-index: 1000;
+    width: 44px !important;
+    height: 48px !important;
+    background-color: #fff !important;
+    border: 2px solid #d7d7d7 !important;
+    &:hover{
+        background-color: #d7d7d7 !important;
+    }
+}
+.slick-disabled{
+    display: none !important;
+}
+.home-footer{
+    text-align: center;
+    padding: 8px;
+}
