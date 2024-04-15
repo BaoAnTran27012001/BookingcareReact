@@ -56,6 +56,59 @@
     },
     "homepage": {
         "outstanding-doctor": "Outstanding Doctors Last Week",
-        "more-info": "More Information"
+        "more-info": "More Information",
+        "specialty-popular":"Popular Specialties"
+    },
+    "manage-schedule": {
+        "title": "Manage doctor's health check plan",
+        "choose-doctor": "Choose Doctor",
+        "choose-date": "Choose Date",
+        "save-info": "Save Info"
+    },
+    "patient": {
+        "detail-doctor": {
+            "schedule": "Schedule",
+            "no-schedule": "No schedule on this day"
+        },
+        "extra-info-doctor": {
+            "text-address": "CLINIC ADDRESS",
+            "price": "PRICE :",
+            "more-info": "More Information",
+            "payment": "Patient can pay by:",
+            "hide-price": "Hide price panel"
+        },
+        "profile-doctor":{
+            "fee-charge-text":"Free booking",
+            "price-text":"Price:"
+        },
+        "booking-modal": {
+            "title": "Booking Information",
+            "fullName": "Full Name",
+            "phoneNumber": "Phone Number",
+            "email": "Email Address",
+            "address": "Home Address",
+            "reasons": "Reason for booking",
+            "birthday": "Date of birth",
+            "gender": "Gender",
+            "confirm": "Confirm",
+            "cancel": "Cancel"
+        }
+    },
+    "admin": {
+        "manage-doctor": {
+            "title": "Add more information for doctor",
+            "select-doctor": "Choose doctor",
+            "intro": "Introduction",
+            "create": "Create Information",
+            "save": "Save Information",
+            "price": "Price",
+            "payment": "Payment method",
+            "province": "Choose Province",
+            "nameClinic": "Clinic Name",
+            "addressClinic": "Clinic Address",
+            "note": "Note",
+            "specialty":"Choose Specialty",
+            "select-clinic":"Choose Clinic"
+        }
     }
 }

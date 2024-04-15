@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import medicalFacility from '../../../assets/medical-facility/benh-vien-thu-cuc.jpg';
 import './MedicalFacility.scss';
 import Slider from 'react-slick';
@@ -10,7 +11,7 @@ class MedicalFacility extends Component {
         <div className='section-content'>
           <div className='section-header'>
             <span className='title-section'>Cơ sở y tế nổi bật</span>
-            <button className='btn-section'>Xem thêm</button>
+            <button className='btn-section'><FormattedMessage id={'homepage.more-info'} /></button>
           </div>
           <div className='section-body'>
             <Slider {...this.props.settings}>

@@ -7,7 +7,8 @@ import {
   editUserService,
   getTopDoctorHomeService,
   getAllDoctorsService,
-  saveDetailDoctor
+  saveDetailDoctor,
+  getAllSpecialtiesService
 } from '../../services/userService';
 import { toast } from 'react-toastify';
 // export const fetchGenderStart = () => ({
@@ -252,3 +253,61 @@ export const saveDetailDoctorAction = (data) => {
     }
   };
 };
+export const fetchAllScheduleHour = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllcodesService("TIME");
+      console.log(res);
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_ALL_CODE_SCHEDULE_HOUR_SUCCESS,
+          dataTime: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_ALL_CODE_SCHEDULE_HOUR_FAILED,
+        });
+      }
+    } catch (error) {
+      toast.error('Load All Doctors Failed');
+      dispatch({
+        type: actionTypes.FETCH_ALL_CODE_SCHEDULE_HOUR_FAILED,
+      });
+    }
+  };
+};
+export const getRequiredDoctorInfo = () => {
+  return async (dispatch, getState) => {
+    try {
+      dispatch({ type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO_START });
+      let resPrice = await getAllcodesService('PRICE');
+      let resPayment = await getAllcodesService('PAYMENT');
+      let resProvince = await getAllcodesService('PROVINCE');
+      let resSpecilaty = await getAllSpecialtiesService();
+
+
+      if (resPrice && resPrice.errCode === 0 && resPayment && resPayment.errCode === 0 && resProvince && resProvince.errCode === 0 && resSpecilaty && resSpecilaty.errCode === 0) {
+        console.log('baoan check get state: ', getState());
+        let data = {
+          resPrice: resPrice.data,
+          resPayment: resPayment.data,
+          resProvince: resProvince.data,
+          resSpecialty: resSpecilaty.data
+        }
+        dispatch(fetchRequiredDoctorInfoSuccess(data));
+      } else {
+        dispatch(fetchRequiredDoctorInfoFailed());
+      }
+    } catch (error) {
+      dispatch(fetchRequiredDoctorInfoFailed());
+      console.log('fetch getGenderStart: ', error);
+    }
+  };
+};
+export const fetchRequiredDoctorInfoSuccess = (allRequiredData) => ({
+  type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO_SUCCESS,
+  data: allRequiredData,
+});
+export const fetchRequiredDoctorInfoFailed = () => ({
+  type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO_FAILED,
+});
