@@ -8,6 +8,7 @@ import { LANGUAGES } from '../../../utils';
 import NumberFormat from 'react-number-format';
 import _ from 'lodash';
 import moment from 'moment';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 class ProfileDoctor extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +37,10 @@ class ProfileDoctor extends Component {
 
     }
     if (this.props.doctorId !== prevProps.doctorId) {
-      this.getInfoDoctor(this.props.doctorId)
+      let data = await this.getInfoDoctor(this.props.doctorId);
+      this.setState({
+        dataProfile: data,
+      });
     }
   }
   showHideDetailInfo = (status) => {
@@ -60,7 +64,7 @@ class ProfileDoctor extends Component {
   }
   render() {
     let { dataProfile } = this.state;
-    let { language, isShowDescription, dataTime } = this.props;
+    let { language, isShowDescription, dataTime, isShowLinkDetail, isShowPrice, doctorId } = this.props;
     let nameVi = '';
     let nameEn = '';
     if (dataProfile && dataProfile.positionData) {
@@ -96,15 +100,17 @@ class ProfileDoctor extends Component {
           </div>
 
         </div>
-        <div className='price'>
-          <FormattedMessage id={'patient.profile-doctor.price-text'} />
-          {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.VI &&
-            <NumberFormat value={dataProfile.Doctor_Info.priceTypeData.valueVi} displayType='text' thousandSeparator={true} suffix='VND' className='currentcy' />
-          }
-          {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.EN &&
-            <NumberFormat value={dataProfile.Doctor_Info.priceTypeData.valueEn} displayType='text' thousandSeparator={true} suffix='USD' className='currentcy' />
-          }
-        </div>
+        {isShowLinkDetail === true && <div className='view-detail-doctor'><Link to={`/detail-doctor/${doctorId}`}>Xem thêm</Link></div>}
+        {isShowPrice === true &&
+          < div className='price'>
+            <FormattedMessage id={'patient.profile-doctor.price-text'} />
+            {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.VI &&
+              <NumberFormat value={dataProfile.Doctor_Info.priceTypeData.valueVi} displayType='text' thousandSeparator={true} suffix='VND' className='currentcy' />
+            }
+            {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.EN &&
+              <NumberFormat value={dataProfile.Doctor_Info.priceTypeData.valueEn} displayType='text' thousandSeparator={true} suffix='USD' className='currentcy' />
+            }
+          </div>}
       </React.Fragment>
     );
   }

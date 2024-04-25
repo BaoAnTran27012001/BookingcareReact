@@ -26,7 +26,10 @@ class DoctorSchedule extends Component {
       });
 
     }
-
+    let res = await getScheduleDoctorByDate(this.props.detailDoctorId, arrDates[0].value);
+    this.setState({
+      allAvailableTime: res.data ? res.data : [],
+    })
   }
   async componentDidUpdate(prevProps, prevState, snapShot) {
     if (this.props.language !== prevProps.language) {
@@ -59,9 +62,9 @@ class DoctorSchedule extends Component {
   handleClickScheduleTime = (time) => {
     this.setState({
       isOpenModalBooking: true,
-      dataScheduleTimeModal:time
+      dataScheduleTimeModal: time
     });
-    
+
     console.log('baoan check time: ', time);
   }
   handleCloseBookingModal = () => {
@@ -96,7 +99,7 @@ class DoctorSchedule extends Component {
     return arrDate;
   }
   render() {
-    let { allDays, allAvailableTime, isOpenModalBooking,dataScheduleTimeModal } = this.state;
+    let { allDays, allAvailableTime, isOpenModalBooking, dataScheduleTimeModal } = this.state;
     let { language } = this.props;
     return (
       <React.Fragment>
@@ -123,7 +126,7 @@ class DoctorSchedule extends Component {
             </div>
           </div>
         </div>
-        <BookingModal isOpenModal={isOpenModalBooking} closeBookingModal={this.handleCloseBookingModal} dataTime={dataScheduleTimeModal}/>
+        <BookingModal isOpenModal={isOpenModalBooking} closeBookingModal={this.handleCloseBookingModal} dataTime={dataScheduleTimeModal} />
       </React.Fragment>
     );
   }

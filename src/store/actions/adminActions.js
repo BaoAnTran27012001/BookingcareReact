@@ -8,7 +8,8 @@ import {
   getTopDoctorHomeService,
   getAllDoctorsService,
   saveDetailDoctor,
-  getAllSpecialtiesService
+  getAllSpecialtiesService,
+  getAllClinics
 } from '../../services/userService';
 import { toast } from 'react-toastify';
 // export const fetchGenderStart = () => ({
@@ -284,15 +285,16 @@ export const getRequiredDoctorInfo = () => {
       let resPayment = await getAllcodesService('PAYMENT');
       let resProvince = await getAllcodesService('PROVINCE');
       let resSpecilaty = await getAllSpecialtiesService();
+      let resClinic = await getAllClinics();
 
-
-      if (resPrice && resPrice.errCode === 0 && resPayment && resPayment.errCode === 0 && resProvince && resProvince.errCode === 0 && resSpecilaty && resSpecilaty.errCode === 0) {
+      if (resPrice && resPrice.errCode === 0 && resPayment && resPayment.errCode === 0 && resProvince && resProvince.errCode === 0 && resSpecilaty && resSpecilaty.errCode === 0 && resClinic && resClinic.errCode === 0) {
         console.log('baoan check get state: ', getState());
         let data = {
           resPrice: resPrice.data,
           resPayment: resPayment.data,
           resProvince: resProvince.data,
-          resSpecialty: resSpecilaty.data
+          resSpecialty: resSpecilaty.data,
+          resClinic: resClinic.data
         }
         dispatch(fetchRequiredDoctorInfoSuccess(data));
       } else {
